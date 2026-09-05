@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pneumonia Detection | AI Medical Diagnosis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        .detection-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .page-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #e8f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+        }
+
+        .page-header h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            color: #17324d;
+        }
+
+        .page-header p {
+            color: #60758a;
+            font-size: 16px;
+        }
+
+        .upload-card {
+            max-width: 760px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 15px 45px rgba(36, 59, 83, 0.12);
+        }
+
+        .upload-area {
+            border: 2px dashed #8bb8df;
+            border-radius: 18px;
+            padding: 55px 25px;
+            text-align: center;
+            background: #f8fcff;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #2563eb;
+            background: #f2f8ff;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .upload-area h2 {
+            color: #17324d;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .upload-area p {
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .choose-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .choose-btn:hover {
+            background: #1d4ed8;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        .preview-section {
+            display: none;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .preview-section h3 {
+            color: #17324d;
+            margin-bottom: 15px;
+        }
+
+        #previewImage {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .predict-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #0f766e;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .predict-btn:hover {
+            background: #0d625c;
+        }
+
+        .info-section {
+            max-width: 760px;
+            margin: 30px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(36, 59, 83, 0.08);
+        }
+
+        .info-card .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .info-card h4 {
+            color: #17324d;
+            margin-bottom: 5px;
+        }
+
+        .info-card p {
+            color: #718096;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+            .upload-card {
+                padding: 20px;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="detection-container">
+
+    <a href="{{ url_for('home') }}" class="back-home">
+        ← Back to Home
+    </a>
+
+    <div class="page-header">
+
+        <div class="page-icon">
+            🫁
+        </div>
+
+        <h1>Pneumonia Detection</h1>
+
+        <p>
+            Upload a chest X-ray image for AI-powered pneumonia analysis
+        </p>
+
+    </div>
+
+
+    <div class="upload-card">
+
+        <form action="{{ url_for('predict_pneumonia') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label for="imageInput">
+
+                <div class="upload-area">
+
+                    <div class="upload-icon">
+                        🩻
+                    </div>
+
+                    <h2>Upload Chest X-Ray</h2>
+
+                    <p>
+                        Select a clear chest X-ray image in JPG, JPEG or PNG format
+                    </p>
+
+                    <span class="choose-btn">
+                        Choose X-Ray Image
+                    </span>
+
+                </div>
+
+            </label>
+
+            <input
+                type="file"
+                id="imageInput"
+                name="image"
+                accept="image/png,image/jpeg,image/jpg"
+                required
+            >
+
+
+            <div class="preview-section" id="previewSection">
+
+                <h3>Selected X-Ray</h3>
+
+                <img
+                    id="previewImage"
+                    src=""
+                    alt="Chest X-Ray Preview"
+                >
+
+                <button type="submit" class="predict-btn">
+                    🔍 Analyze X-Ray
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div class="info-section">
+
+        <div class="info-card">
+
+            <div class="icon">🤖</div>
+
+            <h4>AI Analysis</h4>
+
+            <p>
+                Deep learning model analyzes the uploaded X-ray.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="icon">📊</div>
+
+            <h4>Confidence</h4>
+
+            <p>
+                Prediction includes an estimated confidence score.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="icon">📄</div>
+
+            <h4>Medical Report</h4>
+
+            <p>
+                Generate a professional report from the analysis.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    const imageInput = document.getElementById("imageInput");
+    const previewSection = document.getElementById("previewSection");
+    const previewImage = document.getElementById("previewImage");
+
+    imageInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+
+                previewImage.src = event.target.result;
+
+                previewSection.style.display = "block";
+
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

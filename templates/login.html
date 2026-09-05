@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Multi-Disease Detection System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- Left Section -->
+        <div class="login-info">
+
+            <div class="medical-icon">
+                +
+            </div>
+
+            <h1>Multi-Disease<br>Detection System</h1>
+
+            <p class="subtitle">
+                AI-Assisted Medical Image Analysis
+            </p>
+
+            <div class="info-line"></div>
+
+            <p class="description">
+                An intelligent medical screening system designed
+                to assist in the analysis of brain MRI scans and
+                chest X-ray images using deep learning.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <span>✓</span>
+                    <p>Brain Tumor Detection</p>
+                </div>
+
+                <div class="feature">
+                    <span>✓</span>
+                    <p>Pneumonia Detection</p>
+                </div>
+
+                <div class="feature">
+                    <span>✓</span>
+                    <p>AI-Assisted Analysis</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Login Section -->
+        <div class="login-box">
+
+            <div class="welcome-icon">
+                🩺
+            </div>
+
+            <h2>Welcome Back</h2>
+
+            <p class="welcome-text">
+                Login to access the medical screening dashboard
+            </p>
+
+            <!-- Error Message -->
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+
+                <!-- Username -->
+                <div class="input-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Remember -->
+                <div class="login-options">
+
+                    <label class="remember">
+                        <input
+                            type="checkbox"
+                            name="remember"
+                        >
+                        <span>Remember me</span>
+                    </label>
+
+                </div>
+
+
+                <!-- Login Button -->
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    LOGIN
+                </button>
+
+            </form>
+
+
+            <div class="security-note">
+                🔒 Secure access to AI-assisted medical screening
+            </div>
+
+            <p class="disclaimer">
+                For educational and preliminary screening purposes only.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const button =
+                document.querySelector(".show-password");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                button.textContent = "🙈";
+
+            } else {
+
+                password.type = "password";
+                button.textContent = "👁";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

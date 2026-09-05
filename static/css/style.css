@@ -1,0 +1,1317 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef7ff 0%,
+            #f8fbff 50%,
+            #eef6f8 100%
+        );
+
+    color: #243b53;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+
+    width: 100%;
+
+    height: 72px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 8%;
+
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+
+.logo {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    color: #1769aa;
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 35px;
+
+}
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: #52616b;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+
+.nav-links a:hover {
+
+    color: #168aad;
+
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+
+    min-height: 480px;
+
+    padding: 70px 10%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+}
+
+
+.hero-content {
+
+    max-width: 700px;
+
+}
+
+
+.hero-badge {
+
+    display: inline-block;
+
+    background: #e0f4ff;
+
+    color: #1479a6;
+
+    padding: 9px 18px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 22px;
+
+}
+
+
+.hero h1 {
+
+    font-size: 52px;
+
+    line-height: 1.12;
+
+    color: #193b5a;
+
+    margin-bottom: 22px;
+
+}
+
+
+.hero h1 span {
+
+    color: #168aad;
+
+}
+
+
+.hero p {
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #617485;
+
+    max-width: 620px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+}
+
+
+.primary-button,
+.secondary-button {
+
+    text-decoration: none;
+
+    padding: 14px 26px;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+}
+
+
+.primary-button {
+
+    background: #168aad;
+
+    color: white;
+
+}
+
+
+.primary-button:hover {
+
+    background: #126d88;
+
+    transform: translateY(-2px);
+
+}
+
+
+.secondary-button {
+
+    background: white;
+
+    color: #168aad;
+
+    border: 1px solid #b9dce8;
+
+}
+
+
+.secondary-button:hover {
+
+    background: #eefaff;
+
+}
+
+
+/* =========================
+   HERO MEDICAL ICON
+========================= */
+
+.hero-icon {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.medical-circle {
+
+    width: 230px;
+
+    height: 230px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #dff6ff,
+        #ffffff
+    );
+
+    box-shadow:
+        0 20px 50px rgba(22, 138, 173, 0.15);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 100px;
+
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+.detection-section,
+.how-section {
+
+    padding: 80px 9%;
+
+    background: white;
+
+}
+
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+
+}
+
+
+.section-label {
+
+    color: #168aad;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.section-heading h2 {
+
+    font-size: 34px;
+
+    color: #193b5a;
+
+    margin-bottom: 12px;
+
+}
+
+
+.section-heading > p:last-child {
+
+    color: #718096;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================
+   DISEASE CARDS
+========================= */
+
+.disease-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+
+.disease-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e3edf2;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 10px 30px rgba(31, 75, 99, 0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.disease-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(31, 75, 99, 0.13);
+
+}
+
+
+.card-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 32px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.brain-icon {
+
+    background: #f0eaff;
+
+}
+
+
+.lung-icon {
+
+    background: #e5f7f1;
+
+}
+
+
+.disease-card h2 {
+
+    color: #193b5a;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.card-description {
+
+    color: #687b8a;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.detection-info {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.detection-info span {
+
+    background: #f1f8fb;
+
+    color: #31718b;
+
+    padding: 7px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+.detect-button {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: #168aad;
+
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+}
+
+
+.detect-button:hover {
+
+    background: #126d88;
+
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how-section {
+
+    background: #f7fbfd;
+
+}
+
+
+.steps {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+
+}
+
+
+.step {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    border: 1px solid #e5eef2;
+
+}
+
+
+.step-number {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #e0f4fa;
+
+    color: #168aad;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+}
+
+
+.step h3 {
+
+    color: #264b63;
+
+    margin-bottom: 10px;
+
+}
+
+
+.step p {
+
+    color: #718096;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   HOME PAGE DISCLAIMER
+========================= */
+
+.disclaimer {
+
+    max-width: 1000px;
+
+    margin: 60px auto;
+
+    padding: 25px 30px;
+
+    background: #fffaf0;
+
+    border: 1px solid #f4dfb5;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+
+
+.disclaimer h3 {
+
+    color: #8a6420;
+
+    margin-bottom: 10px;
+
+}
+
+
+.disclaimer p {
+
+    color: #75694f;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #193b5a;
+
+    color: #d9e7ef;
+
+    text-align: center;
+
+    padding: 30px;
+
+}
+
+
+footer p {
+
+    color: #d9e7ef;
+
+    margin: 5px;
+
+    font-size: 13px;
+
+}
+
+
+/* ==================================================
+   BRAIN TUMOR / MEDICAL UPLOAD PAGE
+================================================== */
+
+.upload-section {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 65px 25px 80px;
+
+    text-align: center;
+
+}
+
+
+.upload-header {
+
+    max-width: 700px;
+
+    margin: auto;
+
+}
+
+
+.upload-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 20px;
+
+    background: #f0eaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+
+}
+
+
+.upload-header h1 {
+
+    font-size: 42px;
+
+    color: #193b5a;
+
+    margin: 8px 0 15px;
+
+}
+
+
+.upload-header > p:last-child {
+
+    color: #718096;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   UPLOAD CARD
+========================= */
+
+.upload-card {
+
+    max-width: 700px;
+
+    margin: 40px auto 30px;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    border: 1px solid #e1edf2;
+
+    box-shadow:
+        0 12px 35px rgba(31, 75, 99, 0.10);
+
+}
+
+
+/* =========================
+   UPLOAD AREA
+========================= */
+
+.upload-area {
+
+    display: block;
+
+    padding: 45px 25px;
+
+    border: 2px dashed #9ccbd9;
+
+    border-radius: 15px;
+
+    background: #f8fcfe;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.upload-area:hover {
+
+    border-color: #168aad;
+
+    background: #f0faff;
+
+}
+
+
+.upload-area-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.upload-area h2 {
+
+    color: #264b63;
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.upload-area p {
+
+    color: #647b88;
+
+    margin-bottom: 10px;
+
+}
+
+
+.upload-area span {
+
+    display: block;
+
+    color: #8a9ba5;
+
+    font-size: 13px;
+
+}
+
+
+/* Hide normal file input */
+
+.upload-area input[type="file"] {
+
+    display: none;
+
+}
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.preview-container {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #f7fbfd;
+
+    border-radius: 12px;
+
+}
+
+
+.preview-container p {
+
+    color: #52616b;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+
+}
+
+
+#image-preview {
+
+    max-width: 350px;
+
+    max-height: 300px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    border: 1px solid #dce8ed;
+
+}
+
+
+/* =========================
+   ANALYZE BUTTON
+========================= */
+
+.analyze-button {
+
+    margin-top: 25px;
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #168aad;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.analyze-button:hover {
+
+    background: #126d88;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   UPLOAD INFORMATION
+========================= */
+
+.upload-info {
+
+    max-width: 700px;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+.info-item {
+
+    display: flex;
+
+    gap: 15px;
+
+    text-align: left;
+
+    padding: 22px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    border: 1px solid #e4edf1;
+
+}
+
+
+.info-icon {
+
+    font-size: 27px;
+
+}
+
+
+.info-item h3 {
+
+    color: #264b63;
+
+    margin-bottom: 7px;
+
+    font-size: 16px;
+
+}
+
+
+.info-item p {
+
+    color: #718096;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   UPLOAD PAGE DISCLAIMER
+========================= */
+
+.page-disclaimer {
+
+    max-width: 700px;
+
+    margin: 30px auto;
+
+    padding: 20px 25px;
+
+    background: #fffaf0;
+
+    border: 1px solid #f1dfb9;
+
+    border-radius: 12px;
+
+}
+
+
+.page-disclaimer strong {
+
+    color: #85651f;
+
+}
+
+
+.page-disclaimer p {
+
+    color: #75694f;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-top: 8px;
+
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 12px 22px;
+
+    background: white;
+
+    color: #168aad;
+
+    border: 1px solid #b9dce8;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+}
+
+
+.back-button:hover {
+
+    background: #eefaff;
+
+}
+
+
+/* ==================================================
+   EXISTING RESULT PAGE STYLES
+================================================== */
+
+.result-box {
+
+    margin-top: 20px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+}
+
+
+.success {
+
+    background-color: #d4edda;
+
+    color: #155724;
+
+}
+
+
+.danger {
+
+    background-color: #f8d7da;
+
+    color: #721c24;
+
+}
+
+
+button {
+
+    padding: 12px 25px;
+
+    margin: 10px;
+
+    font-size: 16px;
+
+    border: none;
+
+    background-color: #168aad;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+button:hover {
+
+    background-color: #126d88;
+
+}
+
+
+input[type="file"] {
+
+    margin: 15px;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 10px;
+
+}
+
+
+/* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+@media (max-width: 850px) {
+
+
+    .hero {
+
+        text-align: center;
+
+        flex-direction: column;
+
+        padding-top: 50px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .hero-buttons {
+
+        justify-content: center;
+
+    }
+
+
+    .disease-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .steps {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+
+    .nav-links {
+
+        gap: 15px;
+
+    }
+
+
+}
+
+
+@media (max-width: 700px) {
+
+
+    .upload-header h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .upload-card {
+
+        padding: 20px;
+
+    }
+
+
+    .upload-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+}
+
+
+@media (max-width: 550px) {
+
+
+    .navbar {
+
+        padding: 0 5%;
+
+    }
+
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+
+    .hero {
+
+        padding: 45px 6%;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .hero p {
+
+        font-size: 16px;
+
+    }
+
+
+    .medical-circle {
+
+        width: 170px;
+
+        height: 170px;
+
+        font-size: 70px;
+
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .upload-section {
+
+        padding-left: 15px;
+
+        padding-right: 15px;
+
+    }
+
+
+    .upload-area {
+
+        padding: 35px 15px;
+
+    }
+
+}

@@ -1,0 +1,1112 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Medical Diagnosis Report</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef7ff 0%,
+                    #f8fbff 50%,
+                    #eef6f8 100%
+                );
+
+            color: #243b53;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f6b78,
+                    #168fa0
+                );
+
+            color: white;
+
+            padding: 25px 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 15px rgba(15, 107, 120, 0.2);
+        }
+
+
+        .header h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .header p {
+
+            font-size: 15px;
+
+            opacity: 0.92;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 35px auto;
+        }
+
+
+        .page-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .page-title h2 {
+
+            color: #164e63;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .page-title p {
+
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 8px 25px rgba(36, 59, 83, 0.08);
+
+            border: 1px solid #e2edf3;
+        }
+
+
+        .card-title {
+
+            color: #155e75;
+
+            font-size: 19px;
+
+            margin-bottom: 18px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           TOP SECTION
+        ===================================================== */
+
+        .top-section {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           MEDICAL IMAGE
+        ===================================================== */
+
+        .image-card {
+
+            text-align: center;
+        }
+
+
+        .scan-image {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            height: 300px;
+
+            object-fit: contain;
+
+            background: #f5f9fc;
+
+            border-radius: 14px;
+
+            border: 2px solid #dcecf2;
+
+            padding: 10px;
+        }
+
+
+        .image-caption {
+
+            margin-top: 12px;
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           RESULT CARD
+        ===================================================== */
+
+        .result-card {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .diagnosis-label {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .diagnosis {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            line-height: 1.25;
+
+            margin-bottom: 25px;
+        }
+
+
+        .success-text {
+
+            color: #16803c;
+        }
+
+
+        .danger-text {
+
+            color: #c0392b;
+        }
+
+
+        /* =====================================================
+           CONFIDENCE
+        ===================================================== */
+
+        .confidence-box {
+
+            background: #f1f8fa;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .confidence-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .confidence-value {
+
+            color: #0f7785;
+
+            font-size: 20px;
+        }
+
+
+        .progress {
+
+            width: 100%;
+
+            height: 11px;
+
+            background: #dce8ed;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .progress-bar {
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #168fa0,
+                    #36b8a5
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.6s ease;
+        }
+
+
+        /* =====================================================
+           GRAD-CAM
+        ===================================================== */
+
+        .gradcam-card {
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+
+        .gradcam-image {
+
+            width: 100%;
+
+            max-width: 700px;
+
+            height: 400px;
+
+            object-fit: contain;
+
+            background: #f5f9fc;
+
+            border-radius: 14px;
+
+            border: 2px solid #dcecf2;
+
+            padding: 10px;
+        }
+
+
+        .gradcam-text {
+
+            max-width: 850px;
+
+            margin: 15px auto 0;
+
+            color: #526579;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+
+        .gradcam-note {
+
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           PREDICTION BREAKDOWN
+        ===================================================== */
+
+        .breakdown-card {
+
+            margin-bottom: 25px;
+        }
+
+
+        .prediction-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #edf2f5;
+        }
+
+
+        .prediction-row:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .prediction-name {
+
+            font-weight: 600;
+
+            color: #334e68;
+        }
+
+
+        .prediction-value {
+
+            font-weight: bold;
+
+            color: #0f7785;
+        }
+
+
+        /* =====================================================
+           CLINICAL INFORMATION
+        ===================================================== */
+
+        .clinical-card {
+
+            margin-bottom: 25px;
+        }
+
+
+        .clinical-text {
+
+            line-height: 1.7;
+
+            color: #526579;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           AI INFORMATION BOX
+        ===================================================== */
+
+        .ai-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0f9ff,
+                    #f0fdfa
+                );
+
+            border-left: 5px solid #168fa0;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-top: 18px;
+        }
+
+
+        .ai-box h4 {
+
+            color: #155e75;
+
+            margin-bottom: 8px;
+
+            font-size: 16px;
+        }
+
+
+        .ai-box p {
+
+            color: #526579;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MEDICAL DISCLAIMER
+        ===================================================== */
+
+        .disclaimer-box {
+
+            background: #fffaf0;
+
+            border: 1px solid #f3dfb3;
+
+            border-left: 5px solid #d89b22;
+
+            border-radius: 12px;
+
+            padding: 16px 18px;
+
+            margin-top: 18px;
+        }
+
+
+        .disclaimer-box h4 {
+
+            color: #8a6418;
+
+            margin-bottom: 6px;
+
+            font-size: 15px;
+        }
+
+
+        .disclaimer-box p {
+
+            color: #6b5a36;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .actions {
+
+            text-align: center;
+
+            padding: 10px 0 40px;
+        }
+
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            margin: 7px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            border: none;
+
+            transition: 0.25s ease;
+        }
+
+
+        .btn-report {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f7785,
+                    #168fa0
+                );
+
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(15, 119, 133, 0.2);
+        }
+
+
+        .btn-home {
+
+            background: white;
+
+            color: #155e75;
+
+            border: 1px solid #b9d5df;
+        }
+
+
+        .btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 18px rgba(36, 59, 83, 0.15);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #718096;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .top-section {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .header h1 {
+
+                font-size: 24px;
+            }
+
+
+            .header p {
+
+                font-size: 13px;
+            }
+
+
+            .page-title h2 {
+
+                font-size: 23px;
+            }
+
+
+            .diagnosis {
+
+                font-size: 25px;
+            }
+
+
+            .container {
+
+                width: 94%;
+
+                margin-top: 25px;
+            }
+
+
+            .card {
+
+                padding: 20px;
+            }
+
+
+            .scan-image {
+
+                height: 250px;
+            }
+
+
+            .gradcam-image {
+
+                height: 300px;
+            }
+
+
+            .confidence-header {
+
+                gap: 10px;
+            }
+
+
+            .btn {
+
+                width: 90%;
+
+                max-width: 320px;
+
+                margin: 6px auto;
+
+                display: block;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="header">
+
+        <h1>
+            🏥 AI Medical Diagnosis
+        </h1>
+
+        <p>
+            AI-Powered Multiple Disease Detection System
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <div class="container">
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <h2>
+                AI Analysis Result
+            </h2>
+
+            <p>
+                Intelligent analysis of your uploaded medical image
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             IMAGE + DIAGNOSIS
+        ================================================== -->
+
+        <div class="top-section">
+
+
+            <!-- ORIGINAL IMAGE -->
+
+            <div class="card image-card">
+
+                <div class="card-title">
+                    🖼️ Uploaded Medical Image
+                </div>
+
+
+                <img
+                    src="{{ url_for('static', filename='uploads/' + image_file) }}"
+                    class="scan-image"
+                    alt="Uploaded Medical Scan"
+                >
+
+
+                <p class="image-caption">
+
+                    Medical image analyzed by the AI
+                    disease detection model.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- DIAGNOSIS -->
+
+            <div class="card result-card">
+
+                <div class="card-title">
+                    🤖 AI Diagnosis
+                </div>
+
+
+                <p class="diagnosis-label">
+
+                    Detected Condition
+
+                </p>
+
+
+                <div class="diagnosis
+                    {% if 'No Tumor' in result or result == 'Normal' %}
+                        success-text
+                    {% else %}
+                        danger-text
+                    {% endif %}
+                ">
+
+                    {{ result }}
+
+                </div>
+
+
+
+                <!-- CONFIDENCE -->
+
+                <div class="confidence-box">
+
+                    <div class="confidence-header">
+
+                        <span>
+                            AI Confidence
+                        </span>
+
+
+                        <span class="confidence-value">
+
+                            {{ confidence }}%
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress">
+                        <div
+                        class="progress-bar"
+                        id="confidenceBar"
+                        data-confidence="{{ confidence|default(0)|float }}"
+                        ></div>
+                    </div>
+                </div>
+
+                <script>
+                const confidenceBar = document.getElementById("confidenceBar");
+                if (confidenceBar) {
+                    const confidence = parseFloat(
+                        confidenceBar.dataset.confidence || 0
+                    );
+                    confidenceBar.style.width = confidence + "%";
+                }
+                </script>
+
+
+                <p class="image-caption">
+
+                    The confidence value represents the
+                    model's estimated probability for the
+                    predicted class.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             GRAD-CAM
+        ================================================== -->
+
+        {% if gradcam_file %}
+
+<div class="card gradcam-card">
+
+    <div class="card-title">
+        🔥 AI Grad-CAM Visualization
+    </div>
+
+    <img
+        src="{{ url_for('static', filename='uploads/' + gradcam_file) }}"
+        class="gradcam-image"
+        alt="Grad-CAM Visualization"
+    >
+
+    <p class="gradcam-text">
+
+        The Grad-CAM visualization highlights the
+        regions of the medical image that contributed
+        most strongly to the AI model's prediction.
+
+    </p>
+
+    <p class="gradcam-note">
+
+        🔴 Red and yellow regions represent areas
+        receiving relatively greater attention from
+        the model during prediction.
+
+    </p>
+
+</div>
+
+{% endif %}
+
+
+
+        <!-- =================================================
+             PREDICTION BREAKDOWN
+        ================================================== -->
+
+        {% if prediction_details %}
+
+        <div class="card breakdown-card">
+
+            <div class="card-title">
+
+                📊 Prediction Breakdown
+
+            </div>
+
+
+            <div class="prediction-row">
+
+                <span class="prediction-name">
+                    Glioma
+                </span>
+
+                <span class="prediction-value">
+                    {{ prediction_details['Glioma'] }}%
+                </span>
+
+            </div>
+
+
+            <div class="prediction-row">
+
+                <span class="prediction-name">
+                    Meningioma
+                </span>
+
+                <span class="prediction-value">
+                    {{ prediction_details['Meningioma'] }}%
+                </span>
+
+            </div>
+
+
+            <div class="prediction-row">
+
+                <span class="prediction-name">
+                    No Tumor
+                </span>
+
+                <span class="prediction-value">
+                    {{ prediction_details['No Tumor'] }}%
+                </span>
+
+            </div>
+
+
+            <div class="prediction-row">
+
+                <span class="prediction-name">
+                    Pituitary
+                </span>
+
+                <span class="prediction-value">
+                    {{ prediction_details['Pituitary'] }}%
+                </span>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             CLINICAL INFORMATION
+        ================================================== -->
+
+        <div class="card clinical-card">
+
+            <div class="card-title">
+
+                🩺 Clinical Information
+
+            </div>
+
+
+            <p class="clinical-text">
+
+                {{ disease_info }}
+
+            </p>
+
+
+
+            <!-- AI ANALYSIS -->
+
+            <div class="ai-box">
+
+                <h4>
+                    🤖 AI Analysis
+                </h4>
+
+
+                <p>
+
+                    The uploaded medical image has been
+                    processed using an AI-based deep learning
+                    model. The result represents the model's
+                    prediction based on visual patterns and
+                    characteristics identified in the image.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- DISCLAIMER -->
+
+            <div class="disclaimer-box">
+
+                <h4>
+                    ⚠️ Medical Disclaimer
+                </h4>
+
+
+                <p>
+
+                    This system is developed for educational
+                    and decision-support purposes. The AI
+                    prediction should not be considered a
+                    definitive medical diagnosis. Please
+                    consult a qualified healthcare professional
+                    for clinical evaluation and confirmation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================== -->
+
+        <div class="actions">
+
+
+            {% if report_available %}
+
+            <a
+                href="{{ url_for('download_report') }}"
+                class="btn btn-report"
+            >
+
+                📄 Download Medical Report
+
+            </a>
+
+            {% endif %}
+
+
+
+            <a
+                href="{{ url_for('home') }}"
+                class="btn btn-home"
+            >
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div class="footer">
+
+        AI Multiple Disease Detection System
+
+        <br>
+
+        For educational and decision-support purposes only.
+
+    </div>
+
+    
+
+
+</body>
+
+</html>
+```

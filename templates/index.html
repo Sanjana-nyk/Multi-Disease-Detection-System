@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Medical Diagnosis System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- Navigation Bar -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🏥 AI Medical Diagnosis
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="#detection">Detection</a>
+
+        <a href="#about">About</a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🤖 AI-Powered Healthcare
+        </div>
+
+
+        <h1>
+            AI-Powered
+            <span>Multi Disease Detection</span>
+        </h1>
+
+
+        <p>
+            Upload medical images and get AI-assisted disease
+            predictions using deep learning technology.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#detection" class="primary-button">
+                Start Diagnosis
+            </a>
+
+            <a href="#about" class="secondary-button">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-icon">
+
+        <div class="medical-circle">
+            🧠
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Detection Section -->
+
+<section class="detection-section" id="detection">
+
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            AI DIAGNOSTICS
+        </p>
+
+        <h2>
+            Choose a Detection Service
+        </h2>
+
+        <p>
+            Select the medical condition you want to analyze.
+        </p>
+
+    </div>
+
+
+
+    <div class="disease-grid">
+
+
+        <!-- Brain Tumor Card -->
+
+        <div class="disease-card">
+
+            <div class="card-icon brain-icon">
+                🧠
+            </div>
+
+
+            <h2>
+                Brain Tumor Detection
+            </h2>
+
+
+            <p class="card-description">
+
+                Analyze brain MRI scans using a deep learning
+                model to identify different tumor categories.
+
+            </p>
+
+
+            <div class="detection-info">
+
+                <span>✓ Glioma</span>
+
+                <span>✓ Meningioma</span>
+
+                <span>✓ Pituitary</span>
+
+                <span>✓ No Tumor</span>
+
+            </div>
+
+
+            <a href="/brain_tumor"
+               class="detect-button">
+
+                Start Brain Scan Analysis →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Pneumonia Card -->
+
+        <div class="disease-card">
+
+            <div class="card-icon lung-icon">
+                🫁
+            </div>
+
+
+            <h2>
+                Pneumonia Detection
+            </h2>
+
+
+            <p class="card-description">
+
+                Analyze chest X-ray images using an AI model
+                to identify signs associated with pneumonia.
+
+            </p>
+
+
+            <div class="detection-info">
+
+                <span>✓ Chest X-Ray</span>
+
+                <span>✓ Pneumonia</span>
+
+                <span>✓ Normal</span>
+
+            </div>
+
+
+            <a href="/pneumonia"
+               class="detect-button">
+
+                Start X-Ray Analysis →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- How It Works -->
+
+<section class="how-section" id="about">
+
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            SIMPLE PROCESS
+        </p>
+
+        <h2>
+            How It Works
+        </h2>
+
+    </div>
+
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Upload Scan
+            </h3>
+
+            <p>
+                Upload a compatible MRI or chest X-ray image.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                AI Analysis
+            </h3>
+
+            <p>
+                Our trained deep learning model analyzes
+                the uploaded medical image.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Get Results
+            </h3>
+
+            <p>
+                View the predicted result and confidence score.
+            </p>
+
+        </div>
+
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Download Report
+            </h3>
+
+            <p>
+                Generate and download an AI-assisted medical report.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- Disclaimer -->
+
+<section class="disclaimer">
+
+    <h3>
+        ⚕️ Important Medical Disclaimer
+    </h3>
+
+    <p>
+        This system provides AI-assisted predictions for educational
+        and research purposes. The results should not be considered
+        a final medical diagnosis and must be reviewed by a qualified
+        healthcare professional.
+    </p>
+
+</section>
+
+
+
+<!-- Footer -->
+
+<footer>
+
+    <p>
+        © 2026 AI Multi Disease Detection System
+    </p>
+
+    <p>
+        Computer Science & Engineering
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
